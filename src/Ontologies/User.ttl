@@ -1,41 +1,135 @@
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
+@prefix : <http://www.semanticweb.org/User#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/User> .
 
-    <foaf:PersonalProfileDocument rdf:about="">
-        <foaf:maker rdf:nodeID="#User"/>
-        <foaf:primaryTopic rdf:nodeID="#User"/>
-    </foaf:PersonalProfileDocument>
+<http://www.semanticweb.org/User> rdf:type owl:User .
 
-    <foaf:Person rdf:nodeID="#User">
+#################################################################
+#    Object Properties
+#################################################################
 
-        <!-- Maker Person -->
+###  http://www.semanticweb.org/User#hasName
+:hasName rdf:type owl:ObjectProperty ;
+         owl:inverseOf :isNameOf ;
+         rdfs:domain :Person ;
+         rdfs:range :Name .
 
-        <foaf:name xml:lang="en">User</foaf:name>
-        <foaf:givenname>User</foaf:givenname>
-        <foaf:family_name>User</foaf:family_name>
-        <foaf:title>Mr</foaf:title>
-        <foaf:img rdf:resource="https://media-exp1.licdn.com/dms/image/C5603AQHuNy5aTLVF-g/profile-displayphoto-shrink_800_800/0/1564743881127?e=1675296000&v=beta&t=pE8SP9OR2PYquQTc_-awYtZeU31OKWGA7lyPsrZ6JV8"/>
-        <foaf:based_near geo:lat="50.63059060711919" geo:long="3.0625189840339786" />
-        <rdfs:seeAlso rdf:resource="https://www.google.com/maps/place/Lille,+France/@50.6310806,3.0468978,13z/data=!3m1!4b1!4m5!3m4!1s0x47c2d579b3256e11:0x40af13e81646360!8m2!3d50.62925!4d3.057256"/>
-        <foaf:mbox rdf:resource="mailto:sample@user.com"/>
-        <foaf:schoolHomepage rdf:resource="https://ju.se/"/>
 
-        <!-- Interests -->
+###  http://www.semanticweb.org/User#hasBirthDate
+:hasBirthDate rdf:type owl:ObjectProperty ;
+          owl:inverseOf :isBirthDateOf ;
+          rdfs:domain :date ;
+          rdfs:range :BirthDate .
 
-        <foaf:interest rdf:resource="http://purl.org/ontology/Electronics" rdf:label="work"/>
-        <foaf:interest rdf:resource="https://fr.wikipedia.org/wiki/Sushi"/>
 
-    </foaf:Person>
+###  http://www.semanticweb.org/User#hasExperience
+:hasExperience rdf:type owl:ObjectProperty ;
+             owl:inverseOf :isExperienceOf ;
+             rdfs:domain :Person ;
+             rdfs:range :Experience .
 
-    <!-- GROUPS -->
 
-    <foaf:Group rdf:ID="#Admin">
-        <foaf:name>Admin Group</foaf:name>
-        <foaf:member rdf:resource="#Esteban"/>
-    </foaf:Group>
+###  http://www.semanticweb.org/User#hasCity
+:hasCity rdf:type owl:ObjectProperty ;
+            owl:inverseOf :isCityOf ;
+            rdfs:domain :Place ;
+            rdfs:range :City .
 
-    <foaf:Group rdf:ID="#User">
-        <foaf:name>User Group</foaf:name>
-        <foaf:member rdf:resource="#User"/>
-    </foaf:Group>
 
-</rdf:RDF>
+###  http://www.semanticweb.org/User#isCityOf
+:isCityOf rdf:type owl:ObjectProperty ;
+          rdfs:domain :City ;
+          rdfs:range :Country .
+
+
+###  http://www.semanticweb.org/User#isExperienceOf
+:isExperienceOf rdf:type owl:ObjectProperty ;
+           rdfs:domain :Experience ;
+           rdfs:range :Person .
+
+
+###  http://www.semanticweb.org/User#isLanguageOf
+:isLanguageOf rdf:type owl:ObjectProperty ;
+              rdfs:domain :Language ;
+              rdfs:range :Language .
+
+
+###  http://www.semanticweb.org/User#isBirthDateOf
+:isBirthDateOf rdf:type owl:ObjectProperty ;
+             rdfs:domain :BirthDate ;
+             rdfs:range :date .
+
+
+###  http://www.semanticweb.org/User#isNameOf
+:isNameOf rdf:type owl:ObjectProperty ;
+             rdfs:domain :Name ;
+             rdfs:range :Person .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/User#Person_of_Interest
+:Person_of_Interest rdf:type owl:Class ;
+    rdfs:subClassOf :Person ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :hasSubject ;
+                      owl:someValuesFrom :Subject_of_interest
+                    ] ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :hasSubject ;
+                      owl:someValuesFrom :Subject_of_interest2
+                    ] ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :hasExperience ;
+                      owl:allValuesFrom :Master
+                    ] ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :hasLanguage ;
+                      owl:allValuesFrom :English
+                    ] .
+
+
+###  http://www.semanticweb.org/User#Bachelor
+:Bachelor rdf:type owl:Class ;
+          rdfs:subClassOf :Experience .
+
+
+###  http://www.semanticweb.org/User#Country
+:Country rdf:type owl:Class ;
+         rdfs:subClassOf [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasCity ;
+                           owl:someValuesFrom :City
+                         ] .
+
+
+###  http://www.semanticweb.org/User#Experience
+:Experience rdf:type owl:Class ;
+       rdfs:comment "Experience of a user" .
+
+
+###  http://www.semanticweb.org/User#Master
+:Master rdf:type owl:Class ;
+        rdfs:subClassOf :Exeperience .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :City
+                :Country
+                :Experience
+                :Location
+                :User
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

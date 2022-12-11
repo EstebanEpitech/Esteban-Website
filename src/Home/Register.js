@@ -124,7 +124,9 @@ export default class Register extends React.Component {
 				const bindingsStream = await result.execute();
 
 				bindingsStream.on('data', (binding) => {
-					console.log(binding.toString());
+					this.setState({
+						binding: binding.toString(),
+					});
 				});
 			}
 	}
