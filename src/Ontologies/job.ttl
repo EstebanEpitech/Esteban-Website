@@ -1,0 +1,41 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
+
+    <foaf:PersonalProfileDocument rdf:about="">
+        <foaf:maker rdf:nodeID="#User"/>
+        <foaf:primaryTopic rdf:nodeID="#User"/>
+    </foaf:PersonalProfileDocument>
+
+    <foaf:Person rdf:nodeID="#User">
+
+        <!-- Maker Person -->
+
+        <foaf:name xml:lang="en">User</foaf:name>
+        <foaf:givenname>User</foaf:givenname>
+        <foaf:family_name>User</foaf:family_name>
+        <foaf:title>Mr</foaf:title>
+        <foaf:img rdf:resource="https://media-exp1.licdn.com/dms/image/C5603AQHuNy5aTLVF-g/profile-displayphoto-shrink_800_800/0/1564743881127?e=1675296000&v=beta&t=pE8SP9OR2PYquQTc_-awYtZeU31OKWGA7lyPsrZ6JV8"/>
+        <foaf:based_near geo:lat="50.63059060711919" geo:long="3.0625189840339786" />
+        <rdfs:seeAlso rdf:resource="https://www.google.com/maps/place/Lille,+France/@50.6310806,3.0468978,13z/data=!3m1!4b1!4m5!3m4!1s0x47c2d579b3256e11:0x40af13e81646360!8m2!3d50.62925!4d3.057256"/>
+        <foaf:mbox rdf:resource="mailto:sample@user.com"/>
+        <foaf:schoolHomepage rdf:resource="https://ju.se/"/>
+
+        <!-- Interests -->
+
+        <foaf:interest rdf:resource="http://purl.org/ontology/Electronics" rdf:label="work"/>
+        <foaf:interest rdf:resource="https://fr.wikipedia.org/wiki/Sushi"/>
+
+    </foaf:Person>
+
+    <!-- GROUPS -->
+
+    <foaf:Group rdf:ID="#Admin">
+        <foaf:name>Admin Group</foaf:name>
+        <foaf:member rdf:resource="#Esteban"/>
+    </foaf:Group>
+
+    <foaf:Group rdf:ID="#User">
+        <foaf:name>User Group</foaf:name>
+        <foaf:member rdf:resource="#User"/>
+    </foaf:Group>
+
+</rdf:RDF>

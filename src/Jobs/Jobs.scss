@@ -1,0 +1,121 @@
+.job {
+    display: flex;
+    text-transform: uppercase;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-top: 4%;
+    margin-bottom: 2%;
+    padding-inline: 5%;
+
+    &_title {
+        width: 30%;
+        font-weight: 900;
+        font-size: 30px;
+        color: var(--border-color);
+        border: 3px solid transparent;
+    }
+
+    &_filter {
+        text-align: center;
+        border-radius: 20px;
+        border: 3px solid transparent;
+        width: 20%;
+        padding: 8px 16px;
+        transition: all 0.3s ease;
+        height: 20%;
+        text-decoration: underline;
+
+        &:hover {
+            color: var(--border-color);
+            border: 3px solid var(--border-color);
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+    }
+}
+
+.card {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2%;
+    padding-inline: 5%;
+
+    &-main {
+        border: 3px solid var(--border-color);
+        height: 40%;
+        width: 18%;
+        margin-inline: auto;
+        border-radius: 20px;
+        padding: 20px 20px;
+        box-shadow: 4px 4px 10px black;
+        display: flex;
+        flex-direction: column;
+
+        &-title {
+            height: 20%;
+
+            &_text {
+                text-transform: uppercase;
+                text-align: center;
+                font-weight: 800;
+            }
+        }
+
+        &-separator {
+            height: 2px;
+            width: 80%;
+            margin-inline: auto;
+            background-color: var(--border-color);
+        }
+
+        &-content {
+            height: 40%;
+            margin-block: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: column;
+
+            strong {
+                color: var(--border-color);
+                font-weight: 600;
+                height: 20%;
+                margin-block: auto;
+                display: flex;
+                align-items: center;
+            }
+
+            &-input {
+                margin-inline: auto;
+
+                input {
+                    border: none;
+                    border-bottom: 1px solid black;
+                }
+            }
+        }
+
+        &-button {
+            text-align: center;
+            border-radius: 20px;
+            border: 1px solid black;
+            width: 80%;
+            padding: 8px 16px;
+            margin-inline: auto;
+            transition: all 0.3s ease;
+            height: 20%;
+
+            &:hover {
+                color: var(--border-color);
+                border: 3px solid var(--border-color);
+                cursor: pointer;
+                text-align: center;
+                transition: all 0.3s ease;
+            }
+        }
+    }
+}
